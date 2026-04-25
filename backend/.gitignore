@@ -1,0 +1,16 @@
+# Environment variables (contains secrets!)
+.env
+
+# GitHub App private key
+*.pem
+
+# SQLite database file
+*.db
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/

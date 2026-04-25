@@ -1,0 +1,36 @@
+# ============================================
+# GitHub Integration Demo — Python Dependencies
+# ============================================
+# Install all of these with: pip install -r requirements.txt
+
+# FastAPI — the web framework that powers our backend API
+fastapi
+
+# Uvicorn — the server that runs our FastAPI app (like "node" runs JS)
+# [standard] includes extras like auto-reload for development
+uvicorn[standard]
+
+# SQLAlchemy — ORM (Object-Relational Mapper) that lets us talk to the
+# SQLite database using Python classes instead of raw SQL
+sqlalchemy
+
+# HTTPX — HTTP client library (like axios/fetch in JavaScript)
+# We use this to make API calls to GitHub from our backend
+httpx
+
+# python-dotenv — reads variables from the .env file so we don't
+# hardcode secrets in our source code
+python-dotenv
+
+# Pydantic — data validation library (FastAPI uses it automatically
+# to validate request/response data)
+pydantic
+
+# PyJWT — library to create JSON Web Tokens (JWTs)
+# [crypto] extra installs cryptography for RS256 signing
+# We need this to authenticate as a GitHub App
+PyJWT[crypto]
+
+# cryptography — provides the RSA algorithms that PyJWT uses
+# to sign JWTs with the GitHub App's private key
+cryptography
