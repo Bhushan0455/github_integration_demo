@@ -15,6 +15,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
+import InstallCallback from "./pages/InstallCallback";
 
 function App() {
   return (
@@ -29,8 +30,8 @@ function App() {
           {/* Dashboard — shown after successful login */}
           <Route path="/dashboard" element={<Dashboard />} />
 
-          {/* Phase 3: GitHub App installation callback (coming soon)
-              <Route path="/callback/install" element={<InstallCallback />} /> */}
+          {/* Phase 3: GitHub App installation callback */}
+          <Route path="/callback/install" element={<InstallCallback />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

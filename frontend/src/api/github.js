@@ -58,3 +58,75 @@ export async function fetchCurrentUser(token) {
 export function getGitHubLoginUrl() {
   return `${API_BASE}/auth/github`;
 }
+
+/**
+ * Save a new GitHub App installation and its selected repositories.
+ * 
+ * Calls: POST /github/installations/save
+ * Requires: Authorization header
+ * 
+ * @param {string} token - The user's OAuth access token
+ * @param {number} installationId - The installation_id from GitHub's callback URL
+ */
+export async function saveInstallation(token, installationId) {
+  const response = await fetch(`${API_BASE}/github/installations/save`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ installation_id: installationId }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to save installation");
+  }
+
+  return response.json();
+}
+
+/**
+ * Get all tracked GitHub App installations for the current user.
+ * 
+ * Calls: GET /github/installations
+ * Requires: Authorization header
+ * 
+ * @param {string} token - The user's OAuth access token
+ * @returns {Array} List of installations and their selected repos
+ */
+export async function fetchInstallations(token) {
+  const response = await fetch(`${API_BASE}/github/installations`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch installations");
+  }
+
+  return response.json();
+}
+
+/**
+ * Get recent webhook events received by the backend.
+ * 
+ * Calls: GET /webhook/recent
+ * Requires: Authorization header
+ * 
+ * @param {string} token - The user's OAuth access token
+ * @returns {Array} List of recent webhook events
+ */
+export async function fetchRecentWebhooks(token) {
+  const response = await fetch(`${API_BASE}/webhook/recent`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch recent webhooks");
+  }
+
+  return response.json();
+}

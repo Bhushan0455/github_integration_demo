@@ -86,5 +86,10 @@ def health_check():
 from routers.auth import router as auth_router
 app.include_router(auth_router)
 
-# Phase 3: app.include_router(installations_router)
-# Phase 4: app.include_router(webhooks_router)
+# Phase 3: GitHub App installation routes (/github/installations/*)
+from routers.installations import router as installations_router
+app.include_router(installations_router)
+
+# Phase 4: GitHub webhooks routes (/webhook/*)
+from routers.webhooks import router as webhooks_router
+app.include_router(webhooks_router)
